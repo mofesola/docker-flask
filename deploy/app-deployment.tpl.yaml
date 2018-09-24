@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: python-api
+  labels:
+    io.k8s.service: app
+  name: app
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        io.k8s.service: app
+    spec:
+      containers:
+      - env:
+        - name: FLASK_APP
+          value: main.py
+        - name: HOST
+          value: 0.0.0.0
+        - name: LOGLEVEL
+          value: INFO
+        - name: PYTHONUNBUFFERED
+          value: "0"
+        image: mofesola/python-app:${VERSION}
+        name: app
+        ports:
+        - containerPort: 5000
+        resources: {}
+      restartPolicy: Always
+status: {}
