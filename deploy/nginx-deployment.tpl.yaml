@@ -7,15 +7,19 @@ metadata:
   name: nginx
 spec:
   replicas: 1
-  strategy: {}
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
-      creationTimestamp: null
       labels:
         io.k8s.service: nginx
     spec:
       containers:
-      - image: mofesola/webserver:"${VERSION}"
+      - image: mofesola/webserver:${VERSION}
         name: nginx
         ports:
         - containerPort: 80
