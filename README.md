@@ -1,4 +1,4 @@
-#Python Restful App with Docker
+# Python Restful App with Docker
 This app runs python flask within a docker container. The default environment variables in the `.env` file should be 
 sufficient for most purposes but can be altered to suit your usecase.
 
