@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: python-api
+  labels:
+    io.k8s.service: nginx
+  name: nginx
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.k8s.service: nginx
+    spec:
+      containers:
+      - image: mofesola/webserver:"${VERSION}"
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}
