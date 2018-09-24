@@ -11,4 +11,13 @@ docker-compose up --build
 The `app` directory is mounted to the docker container using docker volumes so you can make and see changes to your 
 code while developing without having to restart the container.
 
+To access the HTTP endpoint, run:
+
+```bash
+curl http://localhost/v1/
+curl http://localhost/v2/
+```
+
+for both version 1 and version 2 of the app respectively.
+
 Have fun!
