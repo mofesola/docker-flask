@@ -31,7 +31,7 @@ Ensure that the following tools are available on the machine you intend to build
 When you're all set with those, run the following from the project root:
 
 ```bash
-./deploy.sh
+./deploy.sh <version_number>
 ```
 
 
