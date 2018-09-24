@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  app:
+    image: python-app
+    build: .
+    ports:
+      - "5000:5000/tcp"
+    env_file:
+      - .env
+    volumes:
+      - ./app:/usr/src/app
+
+  nginx:
+    image: webserver
+    build: nginx
+    ports:
+      - "80:80/tcp"
+
